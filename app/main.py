@@ -1,9 +1,13 @@
 from fastapi import FastAPI
 from .router import countries, statuses, images
 from .database import Base, engine
-
+import os
 # ✅ Create database tables automatically (only if they don’t exist)
 Base.metadata.create_all(bind=engine)
+
+
+print("🚀 DATABASE_URL from Railway:", os.getenv("DATABASE_URL"))
+
 
 # ✅ Initialize FastAPI app
 app = FastAPI(
